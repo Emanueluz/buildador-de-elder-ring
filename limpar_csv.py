@@ -30,3 +30,4 @@ tipos=list(dict.fromkeys(tipos))
 del tipos[0]
 
 armas_por_tipo(tipos, lista)
+    
