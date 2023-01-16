@@ -6,12 +6,12 @@ def rank(lista, escabilidade):
     lista_aux=[]
     ordem =[]
     dic ={
-        "s":[],
-        "a":[],
-        "b":[],
-        "c":[],
-        "d":[],
-        "e":[]
+        "S":[],
+        "A":[],
+        "B":[],
+        "C":[],
+        "D":[],
+        "E":[]
     }
     for i in lista:
         aux={}
@@ -31,15 +31,13 @@ def rank(lista, escabilidade):
                 aux={}
                 aux[j[0]]=j[1]
         a.append(aux)
-        ordem.append(a)
         i[len(i)-4]=a
         lista_aux.append(i)
     for i in lista_aux:
-        print(i[0],"\n")
         for j in i[len(i)-4]:
-            if j['name']=="Str":
-                print(j)
-         
+            if j['name']==escabilidade:
+                dic[j["scaling"]].append(i)
+    print(dic)
     return ordem
 
 def triagem_das_armas(qualidades):
