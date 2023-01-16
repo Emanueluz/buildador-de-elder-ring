@@ -3,6 +3,7 @@ import csv
 
 
 def rank(lista, escabilidade):
+    lista_aux=[]
     ordem =[]
     dic ={
         "s":[],
@@ -14,23 +15,30 @@ def rank(lista, escabilidade):
     }
     for i in lista:
         aux={}
+        a=[]
         escala = i[len(i)-4]
         escala =escala.replace("[","");escala =escala.replace("]","")
         escala =escala.replace("{","");escala =escala.replace("}","")
         escala =escala.replace("'","")
         escala = escala.split(", ") 
         for j in escala:
-            j = j.split(": ")
             
+            j = j.split(": ")
             if len(aux)<2:
                 aux[j[0]]=j[1]
             else:
-                
+                a.append(aux)
                 aux={}
                 aux[j[0]]=j[1]
-        print(aux)
-        ordem.append(aux)
-
+        a.append(aux)
+        ordem.append(a)
+        i[len(i)-4]=a
+        lista_aux.append(i)
+    for i in lista_aux:
+        print(i[0],"\n")
+        for j in i[len(i)-4]:
+            if j['name']=="Str":
+                print(j)
          
     return ordem
 
@@ -52,7 +60,7 @@ def triagem_das_armas(qualidades):
 def main ():
     peso_maximo = 4 #input("digite o peso maximo da arma: ") 
     tipo_de_arma ="Bow" #input("digite o tipo de arma que vc quer: ")
-    mult_da_arma ="1" #input("digite o multiplicador da arma :")
+    mult_da_arma ="Str" #input("digite o multiplicador da arma :")
     qualidades=[tipo_de_arma,peso_maximo,mult_da_arma]
     triagem_das_armas(qualidades)
      
